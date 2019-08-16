@@ -1,0 +1,49 @@
+logging:
+  config: classpath:logback-spring-local.xml
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1000Mb
+      max-request-size: 1000Mb
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useSSL=false&characterEncoding=utf-8
+    username: root
+    password: 123456
+  redis:
+    database: 0
+    host: 192.168.0.90
+    port: 6379
+    password: sziov
+    timeout: 1000
+    jedis:
+      pool:
+        max-active: 1000
+        max-wait: 1000
+        max-idle: 1000
+        min-idle: 100
+    max-total: 1001
+    test-on-borrow: true
+    test-on-return: true
+    test-while-idle: true
+    num-tests-per-eviction-run: 1000
+    time-between-eviction-runs-millis: 60000
+    block-when-exhausted: false
+    cache:
+      database: 1 #mybatis缓存使用的redis数据库index
+mybatis:
+#  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.nevmonitor.**.po
+  mapper-locations: classpath*:/mapper/**/*.xml
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+swagger:
+  show: 1
+  basePackage: com.sziov
+  gitUrl: http://192.168.0.89/gac-nev-monitor-center/nev-monitor-center.git

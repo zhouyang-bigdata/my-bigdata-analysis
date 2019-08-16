@@ -1,0 +1,7 @@
+server:
+  port: 1000
+spring:
+  profiles:
+    active: @env@
+  application:
+    name: appstore-platform

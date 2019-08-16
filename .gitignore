@@ -1,0 +1,5 @@
+# Project exclude paths
+/bigdata-analysis-api/target/
+/elasticsearch/target/
+/hbase/target/
+/sparkoffline/target/

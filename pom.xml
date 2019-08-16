@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 继承springboot项目-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.my-bigdata-analysis</groupId>
+    <artifactId>my-bigdata-analysis</artifactId>
+    <version>2.0.0</version>
+    <packaging>pom</packaging>
+
+
+    <modules>
+        <module>bigdata-analysis-api</module>
+        <module>bigdata-analysis-service</module>
+        <module>elasticsearch</module>
+        <module>hbase</module>
+        <module>hadoop</module>
+        <module>sparkrealtime</module>
+        <module>sparkoffline</module>
+    </modules>
+
+
+    <!-- 属性配置，在本项目和集成本项目的子项目中，通过${propertie}的方式可以使用，例如@{com.sziov.common-utils.version}}-->
+    <properties>
+        <!-- 本项目版本项目JAR-->
+        <my-bigdata-analysis.version>2.0.0</my-bigdata-analysis.version>
+
+        <!-- 其他第三方jar版本号 -->
+        <org.apache.phoenix.phoenix-core.version>4.13.0-HBase-1.3</org.apache.phoenix.phoenix-core.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <spring_boot.version>2.0.3.RELEASE</spring_boot.version>
+        <spring-boot-admin.version>2.0.1</spring-boot-admin.version>
+        <skip_maven_deploy>false</skip_maven_deploy>
+        <source-plugin.version>3.0.1</source-plugin.version>
+        <springfox-swagger2.version>2.6.1</springfox-swagger2.version>
+        <springfox-swagger-ui.version>2.6.1</springfox-swagger-ui.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <bcprov-jdk16.version>1.45</bcprov-jdk16.version>
+        <commons-httpclient.version>3.0</commons-httpclient.version>
+        <commons-io.version>2.4</commons-io.version>
+        <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+        <org.poi-version>3.14</org.poi-version>
+        <org.mapstruct-version>1.2.0.CR1</org.mapstruct-version>
+        <fastjson>1.2.41</fastjson>
+        <aliyun-java-sdk-core>2.4.2</aliyun-java-sdk-core>
+        <aliyun-java-sdk-dysmsapi>1.0.0</aliyun-java-sdk-dysmsapi>
+        <xxl-job-core.version>1.9.1</xxl-job-core.version>
+        <jetty-server.version>9.2.24.v20180105</jetty-server.version>
+        <cos_api>5.2.4</cos_api>
+        <guava-retrying>2.0.0</guava-retrying>
+        <tx.sms_api>1.0.2</tx.sms_api>
+        <gson.version>2.8.5</gson.version>
+        <commons-pool2.version>2.4.2</commons-pool2.version>
+        <mysql.driver.version>5.1.39</mysql.driver.version>
+        <slf4j.version>1.7.12</slf4j.version>
+
+        <!--bigdata module version -->
+        <spark.version>2.3.3</spark.version>
+        <scala.version>2.11</scala.version>
+        <!--<spark.streaming.kafka.version>2.1.0</spark.streaming.kafka.version>-->
+        <hadoop.version>2.7.3</hadoop.version>
+        <hive.version>1.1</hive.version>
+        <hbase.version>1.2.6</hbase.version>
+        <hbase.guava.version>18.0</hbase.guava.version>
+        <elastic-search.version>5.2.1</elastic-search.version>
+        <junit.version>4.12</junit.version>
+
+
+    </properties>
+
+    <!-- 项目通用依赖jar-->
+    <dependencies>
+        <!-- springboot的web项目依赖jar-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- springboot的actuator监控依赖jar-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- springboot的测试依赖jar-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- gsonjar，项目中使用json结息时使用-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+        <!-- lombok工具包依赖jar -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- springCloud版本依赖-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 因maven默认的日志slf4j 版本是1.5.3,对hadoop的依赖有兼容性问题，所以重写maven的日志依赖版本-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- 因maven默认的日志slf4j 版本是1.5.3,对hadoop的依赖有兼容性问题，所以重写maven的日志依赖版本-->
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 项目构建配置-->
+    <build>
+        <plugins>
+            <!-- 编译插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <!-- jar发布插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+            <!-- maven里执行测试用例的插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <!-- 源码包插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <!-- 插件申明 -->
+        <pluginManagement>
+            <plugins>
+                <!-- 编译插件-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <!-- 编译配置-->
+                    <configuration>
+                        <!-- 设置jdk版本 -->
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <!-- 设置编码 -->
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <!-- maven里执行测试用例的插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+                <!-- jar发布插件-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <configuration>
+                        <skip>${skip_maven_deploy}</skip>
+                    </configuration>
+                </plugin>
+                <!-- springboot maven插件-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                                <goal>build-info</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- 生成sources源码包的插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${source-plugin.version}</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <!-- 编译的资源（主要是配置文件）-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.properties</include>
+                    <include>application-${env}.properties</include>
+                    <include>application.yml</include>
+                    <include>application-${env}.yml</include>
+                    <include>bootstrap.properties</include>
+                    <include>bootstrap.yml</include>
+                    <include>logback-*.xml</include>
+                    <include>mapper/**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <!-- 运行配置-->
+    <profiles>
+        <!-- 本地环境配置 -->
+        <profile>
+            <id>local</id>
+            <!--运行配置中的参数，当前环境配置启动时，在maven管理的项目的所有配置文件中，
+            可以使用@propertie@来获取配置，例如@eureka.defaultZone@-->
+            <properties>
+                <!-- 环境类型-->
+                <env>local</env>
+                <!-- 使用git作为配置文件服务器时，配置git分支 -->
+                <config.label>develop</config.label>
+                <!-- 配置文件后缀，会获取到application-profile.yml配置文件，例如这个配置或获取到 application-local.yml-->
+                <config.profile>local</config.profile>
+                <!-- 注册中心地址，逗号分割多个注册中心-->
+                <eureka.defaultZone>
+                    http://127.0.0.1:8806/eureka/,http://127.0.0.1:8807/eureka/
+                </eureka.defaultZone>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+                <config.label>develop</config.label>
+                <config.profile>dev</config.profile>
+                <eureka.defaultZone>
+                    http://192.168.0.90:8806/eureka/,http://192.168.0.90:8807/eureka/
+                </eureka.defaultZone>
+            </properties>
+        </profile>
+        <!-- 阿里云测试环境-->
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+                <config.label>develop</config.label>
+                <config.profile>test</config.profile>
+                <eureka.defaultZone>
+                    http://192.168.10.6:8806/eureka/,http://192.168.10.6:8807/eureka/
+                </eureka.defaultZone>
+            </properties>
+        </profile>
+        <!-- 广乘腾讯云生产环境-->
+        <profile>
+            <id>pro</id>
+            <properties>
+                <env>pro</env>
+                <config.label>pro</config.label>
+                <config.profile>pro</config.profile>
+                <eureka.defaultZone>
+                    http://192.168.0.4:8806/eureka/,http://192.168.0.5:8806/eureka/
+                </eureka.defaultZone>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- jar包发布配置 -->
+    <distributionManagement>
+        <!-- 发布版本 -->
+        <repository>
+            <id>releases</id>
+            <name>Releases</name>
+            <url>http://192.168.0.90:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <!-- 快照版本 -->
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshots</name>
+            <url>http://192.168.0.90:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
