@@ -1,4 +1,5 @@
 # Project exclude paths
+.idea
 /bigdata-analysis-api/target/
 /elasticsearch/target/
 /hbase/target/
