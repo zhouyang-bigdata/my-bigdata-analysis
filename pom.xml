@@ -308,18 +308,7 @@
                 </eureka.defaultZone>
             </properties>
         </profile>
-        <!-- 广乘腾讯云生产环境-->
-        <profile>
-            <id>pro</id>
-            <properties>
-                <env>pro</env>
-                <config.label>pro</config.label>
-                <config.profile>pro</config.profile>
-                <eureka.defaultZone>
-                    http://192.168.0.4:8806/eureka/,http://192.168.0.5:8806/eureka/
-                </eureka.defaultZone>
-            </properties>
-        </profile>
+
     </profiles>
 
     <!-- jar包发布配置 -->
