@@ -60,4 +60,20 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <!-- 编译的资源（主要是配置文件）-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>log4j.properties</include>
+                    <include>*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
+    </build>
+
 </project>
