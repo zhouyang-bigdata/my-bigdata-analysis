@@ -1,7 +1,7 @@
 package com.bigdata.hadoop.utils.common.utils;
 
 
-import com.myhadoop.utils.common.sysConstants.SysConstants;
+import com.bigdata.hadoop.utils.common.sysConstants.SysConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

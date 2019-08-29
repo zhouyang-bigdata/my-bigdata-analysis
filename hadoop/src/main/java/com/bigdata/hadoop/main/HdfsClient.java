@@ -51,7 +51,7 @@ public class HdfsClient {
 		//----
 		System.out.println(splitStr);
 		//
-		String pathUri = "hdfs:///test-data/vehicleData";
+		String pathUri = "hdfs:///test-data/event";
 		//创建路径
 		client.mkdir(pathUri);
 		//

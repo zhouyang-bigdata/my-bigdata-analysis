@@ -1,7 +1,7 @@
 package com.bigdata.hadoop.utils.common.sysConstants;
 
 
-import com.myhadoop.utils.common.utils.URLUtils;
+import com.bigdata.hadoop.utils.common.utils.URLUtils;
 import org.junit.Test;
 
 /**

@@ -1,8 +1,8 @@
 package com.bigdata.hadoop.service.impl;
 
-import com.myhadoop.service.HDFSHandleService;
-import com.myhadoop.utils.common.utils.FileBytesUtils;
-import com.myhadoop.utils.hadoopUtils.HDFSUtils;
+import com.bigdata.hadoop.service.HDFSHandleService;
+import com.bigdata.hadoop.utils.common.utils.FileBytesUtils;
+import com.bigdata.hadoop.utils.hadoopUtils.HDFSUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
