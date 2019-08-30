@@ -26,13 +26,15 @@ public class BzipCompress {
 
     public static void main(String[] args) {
         Configuration conf = new Configuration();
+        conf.addResource("core-site.xml");
+        conf.addResource("hdfs-site.xml");
         InputStream in = null;
         OutputStream out = null;
         try {
             FileSystem fs = FileSystem.get(conf);
             // Input file - local file system
             in = new BufferedInputStream(new FileInputStream
-                    ("netjs/Hadoop/Data/log.txt"));
+                    ("E:\\order_detail.csv"));
             // Output file path in HDFS
             Path outFile = new Path("/user/out/test.bz2");
             // Verifying if the output file already exists

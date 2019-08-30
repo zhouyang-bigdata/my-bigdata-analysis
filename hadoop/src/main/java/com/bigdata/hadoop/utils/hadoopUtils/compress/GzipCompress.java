@@ -25,16 +25,18 @@ import org.apache.hadoop.io.compress.CompressionOutputStream;
 public class GzipCompress {
 
     public static void main(String[] args) {
-        System.setProperty("HADOOP_USER_NAME", "root");
+        System.setProperty("HADOOP_USER_NAME", "tom");
         Configuration conf = new Configuration();
+        conf.addResource("core-site.xml");
+        conf.addResource("hdfs-site.xml");
         InputStream in = null;
         OutputStream out = null;
         try {
             FileSystem fs = FileSystem.get(conf);
             // Input file from local file system
-            in = new BufferedInputStream(new FileInputStream("/home/knpcode/Documents/knpcode/Hadoop/Test/data.txt"));
+            in = new BufferedInputStream(new FileInputStream("E:\\order_detail.csv"));
             //Compressed Output file
-            Path outFile = new Path("/user/compout/test.gz");
+            Path outFile = new Path("/order_detail.gz");
             // Verification
             if (fs.exists(outFile)) {
                 System.out.println("Output file already exists");
