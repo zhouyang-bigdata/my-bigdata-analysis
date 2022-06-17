@@ -55,7 +55,7 @@
         <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
         <org.poi-version>3.14</org.poi-version>
         <org.mapstruct-version>1.2.0.CR1</org.mapstruct-version>
-        <fastjson>1.2.41</fastjson>
+        <fastjson>1.2.83</fastjson>
         <aliyun-java-sdk-core>2.4.2</aliyun-java-sdk-core>
         <aliyun-java-sdk-dysmsapi>1.0.0</aliyun-java-sdk-dysmsapi>
         <xxl-job-core.version>1.9.1</xxl-job-core.version>
